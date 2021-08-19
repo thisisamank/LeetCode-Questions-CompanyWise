@@ -11,10 +11,12 @@ with open('output.json', 'a') as outfile:
     outfile.write('[')
     for fileName in allFiles:
         with open(os.getcwd()+"/questions/"+fileName) as file:
+            company_name = fileName.split('_')[0]
             reader = csv.reader(file, delimiter=',')
             for row in reader:
                 outfile.write(
                     '{"question_number" : "' + row[0] + '"' +
+                    ',"company_name" : "' + company_name + '"' +
                     ',"title" : "' + row[1] + '"' +
                     ',"percent_solved" : "' + row[2] + '"' +
                     ',"difficulty_tag" : "' + row[3] + '"' +
